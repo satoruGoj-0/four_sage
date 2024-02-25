@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- insertEmp -->
+<mapper namespace="com.yds.four_sage.mapper.empInsertMapper">
+	<insert id="insertEmp">
+		Insert into emp (
+		id,
+		name,
+		cof,
+		works,
+		work_type,
+		emp_type,
+		work_year,
+		con_period_deadline,
+		gender,
+		nation,
+		birthday,
+		belief,
+		marry,
+		con_period,
+		start_jp_time,
+		finish_jp_time,
+		gojp_batch,
+		gojp_years,
+		create_time
+		)
+		values
+		(
+		#{ id},
+		#{ name},
+		#{ cof},
+		#{ works},
+		#{ workType},
+		#{ empType},
+		#{ workYear},
+		#{ conPeriodDeadline},
+		#{ gender},
+		#{ nation},
+		#{ birthday},
+		#{ belief},
+		#{ marry},
+		#{ conPeriod},
+		#{ startJpTime},
+		#{ finishJpTime},
+		#{ gojpBatch},
+		#{ gojpYears},
+		#{ createTime}
+		);
+	</insert>
+	<!-- InsertWork -->
+	<insert id="InsertWork">
+		insert into
+		work_life_table (
+		id,
+		start_time,
+		finish_time,
+		work_add,
+		work_add_jp,
+		job,
+		job_jp,
+		create_time
+		)
+		values
+		(
+		#{ id},
+		#{ startTime},
+		#{ finishTime},
+		#{ workAdd},
+		#{ workAddJp},
+		#{ job},
+		#{ jobJp},
+		#{ createTime}
+		);
+	</insert>
+	<!-- InsertPassPort -->
+	<insert id="InsertPassPort">
+		insert into
+		passport (
+		id,
+		en_name,
+		pass_code,
+		jp_name,
+		jp_han_name,
+		pass_class,
+		pass_year,
+		pass_eff_year,
+		pass_coff,
+		pass_address,
+		create_time
+		)
+		values
+		(
+		#{ id},
+		#{ enName},
+		#{ passCode},
+		#{ jpName},
+		#{ jpHanName},
+		#{ passClass},
+		#{ passYear},
+		#{ passEffYear},
+		#{ passCoff},
+		#{ passAddress},
+		#{ createTime}
+		);
+	</insert>
+	<!-- InsertHome -->
+	<insert id="InsertHome">
+		insert into
+		home (
+		id,
+		address_new,
+		post_code,
+		home_phone,
+		person_phone,
+		leave_phone,
+		create_time
+		)
+		values
+		(#{ id},
+		#{ addressNew},
+		#{ postcode},
+		#{ homePhone},
+		#{ personPhone},
+		#{ leavePhone},
+		#{ createTime}
+		);
+	</insert>
+	<!-- InsertEdu -->
+	<insert id="InsertEdu">
+		insert into
+		edu_life_table (
+		id,
+		first_ln,
+		ln_power,
+		finish_edu_time,
+		create_time
+		)
+		values
+		(
+		#{ id},
+		#{ firstLn},
+		#{ lnPower},
+		#{ finishEduTime},
+		#{ createTime}
+		);
+	</insert>
+	<!-- InsertAdd -->
+	<insert id="InsertAdd">
+		insert into
+		address_imf (
+		id,
+		code_id,
+		address_code,
+		address_up,
+		address_plo,
+		address_person,
+		create_time
+		)
+		values
+		(
+		#{ id},
+		#{ codeId},
+		#{ addressCode},
+		#{ addressUp},
+		#{ addressPlo},
+		#{ addressPerson},
+		#{ createTime}
+		);
+	</insert>
+	<!-- InsertLearn -->
+	<insert id="InsertLearn">
+		insert into
+		learnex (
+		id,
+		start_edu_time,
+		finish_edu_time,
+		edu,
+		edu_jp,
+		uni,
+		uni_jp,
+		maj,
+		maj_jp,
+		create_time
+		)
+		values
+		(
+		#{ id},
+		#{ startEduTime},
+		#{ finishEduTime},
+		#{ edu},
+		#{ eduJp},
+		#{ uni},
+		#{ uniJp},
+		#{ maj},
+		#{ majJp},
+		#{ createTime}
+		);
+	</insert>
+	<!-- InsertEla -->
+	<insert id="InsertEla">
+		insert into
+		ela (
+		id,
+		elation,
+		ela_name,
+		ela_work_address,
+		ela_phone,
+		create_time
+		)
+		values
+		(
+		#{ id},
+		#{ elation},
+		#{ elaName},
+		#{ elaWorkAddress},
+		#{ elaPhone},
+		#{ createTime}
+		);
+	</insert>
+</mapper>

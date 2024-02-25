@@ -1,0 +1,31 @@
+h3 {
+    color: deepskyblue;
+    text-indent: 80px;
+}
+
+#time {
+    color: #996969;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+p {
+    color: #996f99;
+    text-indent: 50px;
+    line-height: 30px;
+    text-align: center;
+}
+
+h2 {
+    color: brown;
+}
+
+div {
+    width: 70%;
+    padding: 10px;
+    border: 10px solid red;
+    margin: 0 auto;
+}

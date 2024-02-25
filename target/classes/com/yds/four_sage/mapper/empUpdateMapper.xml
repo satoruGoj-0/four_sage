@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yds.four_sage.mapper.empUpdateMapper">
+	<!-- selectId -->
+	<select id="selectAddress" resultType="com.yds.four_sage.pojo.addressImf">
+		SELECT
+		id,
+		code_id,
+		address_code,
+		address_up,
+		address_plo,
+		address_person,
+		create_time
+		FROM address_imf
+		where id = #{id};
+	</select>
+	<select id="selectEdu" resultType="com.yds.four_sage.pojo.eduLifeTable">
+		SELECT id,
+		first_ln,
+		ln_power,
+		finish_edu_time,
+		create_time
+		FROM edu_life_table
+		where id = #{id};
+	</select>
+	<select id="selectEmp" resultType="com.yds.four_sage.pojo.emp">
+		SELECT id,
+		name,
+		cof,
+		works,
+		work_type,
+		emp_type,
+		work_year,
+		con_period_deadline,
+		gender,
+		nation,
+		birthday,
+		belief,
+		marry,
+		con_period,
+		start_jp_time,
+		finish_jp_time,
+		gojp_batch,
+		gojp_years,
+		create_time
+		FROM emp where id = #{id};
+	</select>
+	<select id="selectWorkLife" resultType="com.yds.four_sage.pojo.workLifeTable">
+		SELECT id,bid,
+		start_time,
+		finish_time,
+		work_add,
+		work_add_jp,
+		job,job_jp,
+		create_time
+		FROM
+		work_life_table where id = #{id};
+	</select>
+	<select id="selectPassport" resultType="com.yds.four_sage.pojo.passport">
+		SELECT id,
+		en_name,
+		pass_code,
+		jp_name,
+		jp_han_name,
+		pass_class,
+		pass_year,
+		pass_eff_year,
+		pass_coff,
+		pass_address,
+		create_time
+		FROM
+		passport where id = #{id};
+	</select>
+	<select id="selectHome" resultType="com.yds.four_sage.pojo.home">
+		SELECT id,
+		address_new,
+		post_code,
+		home_phone,
+		person_phone,
+		leave_phone,
+		create_time
+		FROM home where id = #{id};
+	</select>
+	<!-- selectEla -->
+	<select id="selectEla" resultType="com.yds.four_sage.pojo.ela">
+		SELECT bid,
+		id,
+		elation,
+		ela_name,
+		ela_work_address,
+		ela_phone,
+		create_time
+		FROM ela where id = #{id};
+	</select>
+	<!-- selectLearnDao -->
+	<select id="selectLearnDao" resultType="com.yds.four_sage.pojo.learnDao">
+		SELECT bid,
+		id,
+		start_edu_time,
+		finish_edu_time,
+		edu,
+		edu_jp,
+		uni,
+		uni_jp,
+		maj,
+		maj_jp,
+		create_time
+		FROM learnex where id = #{id};
+	</select>
+	<!-- updateEmp -->
+	<update id="updateEmp">
+		update
+		emp
+		set
+		name = #{ name},
+		cof = #{ cof},
+		works = #{ works},
+		work_type = #{ workType},
+		emp_type = #{ empType},
+		work_year = #{ workYear},
+		con_period_deadline = #{ conPeriodDeadline},
+		gender = #{ gender},
+		nation = #{ nation},
+		birthday = #{ birthday},
+		belief = #{ belief},
+		marry = #{ marry},
+		con_period = #{ conPeriod},
+		start_jp_time = #{ startJpTime},
+		finish_jp_time = #{ finishJpTime},
+		gojp_batch = #{ gojpBatch},
+		gojp_years = #{ gojpYears},
+		create_time = #{ createTime}
+		where
+		id = #{id};
+	</update>
+	<!-- updateAdd -->
+	<update id="updateAdd">
+		update
+		address_imf
+		set
+		code_id = #{ codeId},
+		address_code = #{ addressCode},
+		address_up = #{ addressUp},
+		address_plo = #{ addressPlo},
+		address_person = #{ addressPerson},
+		create_time = #{ createTime}
+		where
+		id = #{id};
+	</update>
+	<!-- updateHome -->
+	<update id="updateHome">
+		update
+		home
+		set
+		address_new = #{ addressNew},
+		post_code = #{ postcode},
+		home_phone = #{ homePhone},
+		person_phone = #{ personPhone},
+		leave_phone = #{ leavePhone},
+		create_time = #{ createTime}
+		where
+		id = #{id};
+	</update>
+	<!-- updateWork -->
+	<update id="updateWork">
+		update
+		work_life_table
+		set
+		start_time = #{ startTime},
+		finish_time = #{ finishTime},
+		work_add = #{ workAdd},
+		work_add_jp = #{ workAddJp},
+		job = #{ job},
+		job_jp = #{ jobJp},
+		create_time = #{ createTime}
+		where
+		bid = #{bid};
+	</update>
+	<!-- updatePass -->
+	<update id="updatePass">
+		update
+		passport
+		set
+		en_name = #{ enName},
+		pass_code = #{ passCode},
+		jp_name = #{ jpName},
+		jp_han_name = #{ jpHanName},
+		pass_class = #{ passClass},
+		pass_year = #{ passYear},
+		pass_eff_year = #{ passEffYear},
+		pass_coff = #{ passCoff},
+		pass_address = #{ passAddress},
+		create_time = #{ createTime}
+		where
+		id = #{id};
+	</update>
+	<!-- updateEdu -->
+	<update id="updateEdu">
+		update
+		edu_life_table
+		set
+		first_ln = #{ firstLn},
+		ln_power = #{ lnPower},
+		finish_edu_time = #{ finishEduTime},
+		create_time = #{ createTime}
+		where
+		id = #{id};
+	</update>
+	<!-- updateEla -->
+	<update id="updateEla">
+		update
+		ela
+		set
+		elation = #{ elation},
+		ela_name = #{ elaName},
+		ela_work_address = #{ elaWorkAddress},
+		ela_phone = #{ elaPhone},
+		create_time = #{ createTime}
+		where
+		bid = #{bid};
+	</update>
+	<!-- updateLearnDao -->
+	<update id="updateLearnDao">
+		update
+		learnex
+		set
+		start_edu_time = #{ startEduTime},
+		finish_edu_time = #{ finishEduTime},
+		edu = #{ edu},
+		edu_jp = #{ eduJp},
+		uni = #{ uni},
+		uni_jp = #{ uniJp},
+		maj = #{ maj},
+		maj_jp = #{ majJp},
+		create_time = #{ createTime}
+		where
+		bid = #{bid};
+	</update>
+</mapper>

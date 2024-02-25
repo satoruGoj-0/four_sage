@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script src="js/axios.js"></script>
+    <title>归来</title>
+</head>
+
+<body>
+    <div id="app"> <input type="button" value="get" />{{emp}}</div>
+    <input type="button" value="post" onclick="post()" />
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            emp: []
+        },
+        mounted() {
+            axios.get("/listEmp").then(res => {
+                if(res.data.code){
+                    this.tableData = res.data.data;
+                }
+            })
+        }
+    })
+
+</script>
+
+</html>

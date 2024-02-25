@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yds.four_sage.mapper.empMapper">
+	<!-- 一览查询功能 -->
+	<select id="selectAll" resultType="com.yds.four_sage.dto.empIfDto">
+		SELECT
+		emp.id,
+		emp.name,
+		emp.cof,
+		emp.works,
+		emp.work_type,
+		emp.emp_type,
+		emp.work_year,
+		emp.con_period_deadline,
+		passport.pass_eff_year,
+		emp.gender,
+		emp.nation,
+		emp.birthday,
+		emp.belief,
+		emp.marry,
+		emp.con_period,
+		emp.start_jp_time,
+		emp.finish_jp_time,
+		emp.gojp_batch,
+		address_imf.address_up,
+		address_imf.address_code,
+		emp.gojp_years,
+		address_imf.code_id,
+		home.home_phone,
+		home.address_new,
+		edu_life_table.finish_edu_time,
+		home.person_phone,
+		emp.create_time
+		FROM emp
+		INNER JOIN address_imf       ON emp.id = address_imf.id
+		INNER JOIN home              ON emp.id = home.id
+		INNER JOIN passport          ON emp.id = passport.id
+		INNER JOIN edu_life_table    ON emp.id = edu_life_table.id
+		<where>
+			<if test="id!=null and id!=''">
+				and emp.id = #{id}
+			</if>
+			<if test="name!=null and name!=''">
+				and emp.name like concat('%', #{name},'%')
+			</if>
+			<if test="works!=null and works!=''">
+				and emp.works = #{works}
+			</if>
+			<if test="workYear!=null and workYear!=''">
+				and emp.work_year = #{workYear}
+			</if>
+			<if test="startJpTime!=null and startJpTime!=''">
+				and emp.start_jp_time BETWEEN #{startJpTime} AND '9999-12-31'
+			</if>
+			<if test="finishJpTime!=null and finishJpTime!=''">
+				and emp.finish_jp_time BETWEEN '0000-00-00' AND #{finishJpTime}
+			</if>
+			<if test="workType!=null and workType!=''">
+				and emp.work_type  like concat('%', #{workType},'%')
+			</if>
+			<if test="empType!=null and empType!=''">
+				and emp.emp_type = #{empType}
+			</if>
+			<if test="gender!=null ">
+				and emp.gender = #{gender}
+			</if>
+			<if test="belief!=null and belief!=''">
+				and emp.belief = #{belief}
+			</if>
+			<if test="cof!=null and cof!=''">
+				and emp.cof like concat('%', #{cof},'%')
+			</if>
+		</where>
+	</select>
+	<select id="printAll" resultType="com.yds.four_sage.dto.empIfDto">
+		SELECT
+		emp.id,
+		emp.name,
+		emp.cof,
+		emp.works,
+		emp.work_type,
+		emp.emp_type,
+		emp.work_year,
+		emp.con_period_deadline,
+		passport.pass_eff_year,
+		emp.gender,
+		emp.nation,
+		emp.birthday,
+		emp.belief,
+		emp.marry,
+		emp.con_period,
+		emp.start_jp_time,
+		emp.finish_jp_time,
+		emp.gojp_batch,
+		address_imf.address_up,
+		address_imf.address_code,
+		emp.gojp_years,
+		address_imf.code_id,
+		home.home_phone,
+		home.address_new,
+		edu_life_table.finish_edu_time,
+		home.person_phone,
+		emp.create_time
+		FROM emp
+		INNER JOIN address_imf       ON emp.id = address_imf.id
+		INNER JOIN home              ON emp.id = home.id
+		INNER JOIN passport          ON emp.id = passport.id
+		INNER JOIN edu_life_table    ON emp.id = edu_life_table.id
+		where  emp.id in
+		<foreach item="id" collection="ids" separator="," open="(" close=")">
+			#{id}
+		</foreach>
+	</select>
+</mapper>
